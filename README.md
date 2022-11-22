@@ -1,4 +1,4 @@
-# grupo_6_musicalidades
+# grupo_6_musicalidades --> Curso FullStack Digital House
 
 Musicalidades es una web de venta de instrumentos musicales y accesorios. Está dirigido a personas que se interesen por aprender a tocar un instrumento y también a aquellas que ya tocan alguno y quieren reeemplazarlo por uno nuevo o necesitan accesorios para su uso.
 
@@ -23,4 +23,3 @@ EL EQUIPO DE DESARROLLO:
 Juan Agustín Vázquez: Tiene 26 años años y vive en Ciudad de Buenos Aires. Completó 2 años de ingenieria aeroespacial. Trabajó independientemente diagnosticando y reparando computadoras. Es estudiante de programador full stack. En su tiempo libre le gusta tocar el piano y jugar al tenis.
 
 Guadalupe Flores Cottet: Tiene 39 años años y vive en Ciudad de Buenos Aires. Es Diseñadora Gráfica y Licenciada en Tecnologías Educativas. Actualmente trabaja en análisis de información. Se desempeñó en diseño web durante varios años (front end) y recientemente realizó cursos de Diseño UX/UI y de QA Tesing. Busca volcarse 100% al mundo IT.
-
