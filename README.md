@@ -1,4 +1,4 @@
-# Musicalidades --> Proyecto Full Stack. Curso FullStack Digital House
+# Musicalidades --> Proyecto Final. Curso FullStack Digital House
 
 Musicalidades es una web de venta de instrumentos musicales y accesorios. Está dirigido a personas que se interesen por aprender a tocar un instrumento y también a aquellas que ya tocan alguno y quieren reeemplazarlo por uno nuevo o necesitan accesorios para su uso.
 
