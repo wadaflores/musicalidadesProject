@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+<body class="registro-body">
+    <%- include('../partials/header') %>
+    <hr>
+    <h2 style="text-align: center;"> Hola <i><%= user.nombre%> <%=user.apellido%> </i>!</h2>
+    <hr>
+    <section class="tituloAdmin">
+    </section>
+    <section class="busquedaTitulo"></section>
+    <section class="ordenYfiltros"></section>
+    <main class="myProfile">
+        <div id="img">
+            <img src="/img/<%= user.avatar %>" alt="">
+        </div>
+        <div>
+            <h3><u>Datos de Usuario</u></h3>
+            <p>NOMBRE: <span><%= user.nombre%></span></p>
+            <p>APELLIDO: <span><%= user.apellido%></span></p>
+            <p>EMAIL: <span><%= user.email%></span></p>
+            <p>PAÍS: <span><%= user.pais%></span></p>
+            <p>CIUDAD: <span><%= user.ciudad%></span></p>
+            <p>CÓDIGO POSTAL: <span><%= user.codPostal%></span></p>
+            <p>FECHA DE NACIMIENTO: <span><%= user.fechaNac%></span></p>
+            
+            <p class="p-admin">
+                <a class="botones-admin" href="/modifyuser/<%= user.id %>">EDITAR</a>
+                <a class="botones-admin" href="/deleteUser/<%= user.id %>">ELIMINAR</a>
+                <a class="botones-admin" href="/cambiarPassword">CAMBIAR CONTRASEÑA</a>
+            </p>
+        </div>
+    </main>
+    <div class="pagina" id="paginado-tienda"></div>
+    <%- include('../partials/footer') %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+    <script src="/js/busquedaProductos.js"></script> 
+
+    
+</body>
+</html>

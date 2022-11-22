@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-------------------------HEAD-------------------------->
+<%- include('../partials/head') %>
+
+<body>
+    <!-----------------------HEADER-------------------------->
+    <%- include('../partials/header') %>
+    <!-------------------------MAIN------------------------------->
+    <section class="tituloAdmin">
+        <% if (admin == true) { %>
+            <h2 class="titulo-admin">VISTA DE ADMINISTRACIÓN</h2>
+        <% }%>
+    </section>
+    <section class="busquedaTitulo"></section>
+    <section class="ordenYfiltros"></section>
+    <main>
+        <h3 class="titulo">Detalles del Producto <%= product.nombre%></h3>
+        <h4 class="titulo-nav-paginas">> Categoría: <%= categoria %> <span>> Marca: <%= marca %> <span>> <%= product.nombre %></span></h4>
+        <section class="producto">
+            
+
+            <!-- carousel -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="imgsCarousel">
+                            <div class="imgsDiv" id="<%= product.imagenes[0] %>">
+                                <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+                                <div class="carousel-item">
+                                    <img src="/img<%= product.imagenes[0] %>" alt="<%= product.imagenes[0] %>">
+                                </div>
+                            </div>
+                            <div class="imgsDiv" id="<%= product.imagenes[1] %>">
+                                <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+                                <div class="carousel-item">
+                                    <img src="/img<%= product.imagenes[1] %>" alt="<%= product.imagenes[1] %>">
+                                </div>
+                            </div>
+                            <div class="imgsDiv" id="<%= product.imagenes[2] %>">
+                                <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+                                <div class="carousel-item">
+                                    <img src="/img<%= product.imagenes[2] %>" alt="<%= product.imagenes[2] %>">
+                                </div>
+                            </div>
+                            <div class="imgsDiv" id="<%= product.imagenes[3] %>">
+                                <input class="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="">
+                                <div class="carousel-item">
+                                    <img src="/img<%= product.imagenes[3] %>" alt="<%= product.imagenes[3] %>">
+                                </div>
+                            </div>
+                            <div class="imgsDiv" id="<%= product.imagenes[4] %>">
+                                <input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
+                                <div class="carousel-item">
+                                    <img src="/img<%= product.imagenes[4] %>" alt="<%= product.imagenes[4] %>">
+                                </div>
+                            </div>
+                        </div>
+                        <label for="carousel-5" class="carousel-control prev control-1">‹</label>
+                        <label for="carousel-4" class="carousel-control next control-1">›</label>
+                        <label for="carousel-3" class="carousel-control prev control-2">‹</label>
+                        <label for="carousel-2" class="carousel-control next control-2">›</label>
+                        <label for="carousel-1" class="carousel-control prev control-3">‹</label>
+                        <label for="carousel-5" class="carousel-control next control-3">›</label>
+                        <label for="carousel-4" class="carousel-control prev control-4">‹</label>
+                        <label for="carousel-3" class="carousel-control next control-4">›</label>
+                        <label for="carousel-2" class="carousel-control prev control-5">‹</label>
+                        <label for="carousel-1" class="carousel-control next control-5">›</label>
+                    </div>
+                </div>
+                <ol class="carousel-indicadores">
+                    <% for (let i=0; i<5; i++) { %>
+                        <li id="<%= product.imagenes[i] %>">
+                            <label for="carousel-<%=i+1%>" class="carousel-bullet"><img src="/img<%= product.imagenes[i] %>" alt="<%= product.imagenes[i] %>"></label>
+                        </li>
+                    <%}%>
+
+                </ol>
+            </div>
+                <!-- descripcion del producto -->
+                
+            <div class="cont-producto-descripcion">
+                <% if (admin == true) { %>
+                    <p class="p-admin"><a class="botones-admin" href="/tienda/modifyProduct/<%= product.id %>">EDITAR</a><a class="botones-admin-eliminar" id="/tienda/deleteProduct/<%= product.id %>" rel="<%= product.nombre %>">ELIMINAR</a></p>
+                <% }%> 
+                <article class="producto-descripcion">
+                    <h2><%= product.nombre%></h2>
+                    <h3><%= product.descripcion%>.<b> Marca: </b><%= marca%></h3>
+                    <% if (product.descuento > 0){ %>
+                        <span class="precio-tachado-big">$<%= Intl.NumberFormat('sp-SP').format(product.precio) %></span>
+                        <span class="precio">$<%= Intl.NumberFormat('sp-SP').format((product.precio * (100-product.descuento))/100) %></span>
+                        <p class="descuento"><%= product.descuento %>% OFF</p>
+                    <% } else { %>
+                        <p class="precio">$<%= Intl.NumberFormat('sp-SP').format(product.precio) %></p>
+                        <p class="descuento">      </p>
+                    <% } %>
+                    <% if (product.stock == 0) { %>
+                        <br/>
+                        <span class="gray">Sin Stock!</span>
+                    <%}else{%>
+                    <form action="" class="producto-form">
+                        <div class="cantidad">
+                            <label for="-">
+                                <button id="-" name="menos">-</button>
+                            </label>
+                            <label for="cantidad">
+                                <input type="number" name="cantidad" id="cantidad" value="1" required>
+                            </label>
+                            <label for="+">
+                                <button id="+" name="mas">+</button>
+                            </label>
+                        </div>
+                            <label for="enviar">
+                                <button type="submit" id="enviar" class="boton-enviar">AGREGAR AL CARRITO</button>
+                            </label>
+                    </form>
+                    <%}%> 
+                    <p></p>
+                    <% if (product.stock == 1) { %>
+                    <span class="stock">Último en Stock!</span>
+                    <span class="stock" style="display:none">Stock: <span class="stock" id="stockCantidad"><%= product.stock %></span>
+                    <%}%>
+                    <%if (product.stock > 1){%>
+                        <span class="stock">Stock: <span class="stock" id="stockCantidad"><%= product.stock %></span>
+                    <%}%>
+                    </span>
+                </article>
+                <article class="producto-descripcion">
+                    <div>
+                        <h4>Detalles del producto:</h4>
+                        <p class="descripcion-detallada">
+                            <%= product.descLarga%>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>    
+    <div class="pagina" id="paginado-tienda"></div>
+    <!-------------------------FOOTER------------------------------->
+    <%- include('../partials/footer') %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/imgsDetalleProducto.js"></script>    
+    <script src="/js/busquedaProductos.js"></script>
+    <script src="/js/eliminarProducto.js"></script>         
+    <% if (admin == false) { %>
+        <script src="/js/detalleProductoCarrito.js"></script>
+    <%}%>
+</body>
+</html>

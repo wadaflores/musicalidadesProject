@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-------------------------HEAD-------------------------->
+<%- include('../partials/head') %>
+
+<body>
+    <!-----------------------HEADER-------------------------->
+    <%- include('../partials/header') %>
+    <!-------------------------MAIN------------------------------->
+    
+    <section class="tituloAdmin">
+        <% if (admin == true) { %>
+            <h2 class="titulo-admin">VISTA DE ADMINISTRACIÓN</h2>
+        <% }%>
+    </section>
+    <section class="busquedaTitulo"></section>
+    <section class="ordenYfiltros"></section>
+    <main>
+        <h3 class="titulo">Productos en tu Carrito</h3>
+        <section class="carrito" id="carrito">
+        </section>
+        <section class="carrito" id="carrito-container">
+            <div>
+                <h2>Dirección de envío:</h2>
+            </div>
+            <form action="" class="form">
+                <div class="datos">
+                    <label for="direccion">
+                        <input type="text" name="direccion" id="direccion" placeholder="Dirección">
+                    </label>
+                    <label for="provincia">
+                        <input type="text" name="provincia" id="provincia" placeholder="Provincia*">
+                    </label>
+                    <label for="ciudad">
+                        <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad / Localidad">
+                    </label>
+                    <label for="codigo">
+                        <input type="text" name="codigo" id="codigo" placeholder="Código postal*">
+                    </label>
+                </div>
+                <article>
+                    <div class="subtotal">
+                        <h3 id="subtotal">Subtotal: </h3>
+                        <p id="subtotalP">$ xxxxx</p>
+                    </div>
+                    <div class="subtotal">
+                        <h3>Costo de envío:</h3>
+                        <p>$ 1.000</p>
+                    </div>
+                    <div class="total">
+                        <h2>Total:</h2>
+                        <p class="total-p" id="totalP">$ xxxxx</p>
+                    </div>
+                </article>
+                <div class="botones-fondo">
+                    <a href="/tienda"><button class="boton-enviar" id="botonSeguirComprando"> ‹SEGUIR COMPRANDO </button></a>
+                    <button type="submit" class="boton-enviar" id="botonFinalizarCompra">FINALIZAR COMPRA</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <div class="pagina" id="paginado-tienda"></div>
+    <!-------------------------FOOTER------------------------------->
+    <%- include('../partials/footer') %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>     
+    <script src="/js/busquedaProductos.js"></script>
+    <script src="/js/manejoCarrito.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-------------------------HEAD-------------------------->
+<%- include('./partials/head') %>
+
+<body>
+    <!-----------------------HEADER-------------------------->
+    <%- include('./partials/header') %>
+    <!-------------------------MAIN------------------------------->
+    <section class="tituloAdmin">
+        <% if (admin == true) { %>
+            <h2 class="titulo-admin">VISTA DE ADMINISTRACIÓN</h2>
+            <a class="botones-admin naranja" href="/tienda/newProduct">AGREGAR NUEVO PRODUCTO</a>
+        <% }%>
+    </section>
+    <section class="busquedaTitulo"></section>
+    <section class="ordenYfiltros"></section>
+    <main>
+        
+        <section class="section-carousel">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+                    <div class="carousel-item">
+                        <img src="./img/img1.jpg">
+                    </div>
+                    <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+                    <div class="carousel-item">
+                        <img src="./img/img2.jpg">
+                    </div>
+                    <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+                    <div class="carousel-item">
+                        <img src="./img/img3.jpg">
+                    </div>
+                    <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+                    <label for="carousel-2" class="carousel-control next control-1">›</label>
+                    <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+                    <label for="carousel-3" class="carousel-control next control-2">›</label>
+                    <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+                    <label for="carousel-1" class="carousel-control next control-3">›</label>
+                    <ol class="carousel-indicators">
+                        <li>
+                            <label for="carousel-1" class="carousel-bullet">•</label>
+                        </li>
+                        <li>
+                            <label for="carousel-2" class="carousel-bullet">•</label>
+                        </li>
+                        <li>
+                            <label for="carousel-3" class="carousel-bullet">•</label>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    
+        <!-- BOTONES REDONDEOS-->
+        <section id="botones-redondos">
+            <a><button class="botones-redondos" id="botones-redondos-cuerdas"><img class="img-boton" src="./img/guitarra.png" alt="guitarra"><p>Cuerdas</p></button></a>
+            <a><button class="botones-redondos" id="botones-redondos-percusion"><img class="img-boton" src="./img/bateria.png" alt="bateria"><p>Percusión</p></button></a>
+            <a><button class="botones-redondos" id="botones-redondos-teclas"><img class="img-boton" src="./img/piano-de-cola.png" alt="piano de cola"></i><p>Teclas</p></button></a>
+            <a><button class="botones-redondos" id="botones-redondos-vientos"><img class="img-boton" src="./img/tuba.png" alt="tuba"></i><p>Vientos</p></button></a>
+        </section>
+
+        <!--ICONOS COMPRAS-->
+        <div class="iconos-compras">
+            <div>
+                <i class="fa-solid fa-credit-card fa-2x"></i>
+                <h4>Comprá con todas las Tarjeras</h4>
+                <p>Pagá con cualquier tarjeta de crédito o débito de forma segura a través de Mercado Pago.</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-truck-fast fa-2x"></i>
+                <h4>Envíos a todo el país</h4>
+                <p>Ingresá tu dirección al momento del pago para calcular tu costo de envío a través de Correo Argentino.</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-tags fa-2x"></i>
+                <h4>Ahora 12</h4>
+                <p>Comprá en 3, 6 y 12 cuotas fijas mensuales con tarjeta de crédito, todos los días de la semana.</p>
+            </div>
+        </div>
+        <!-- PRODUCTOS DESTACADOS-->
+        <div class="destacados-titulo"><h2>Productos Destacados del Mes</h2></div>
+        <section id="productos-destacados">
+            
+            <% let i =0;
+            products.forEach((product) => {
+                i++; 
+                if (i < 6){ %>
+                <div class="productos-destacados">
+                    <a href="/tienda/productDetail/<%= product.id %>"><img src="/img/<%= product.imagenes[0] %>" alt=<%= product.nombre %>></a>
+                    <h3><%= product.nombre %></h3>
+                    <% if (product.descuento > 0){ %>
+                        <span class="precio-tachado">$<%= Intl.NumberFormat('sp-SP').format(product.precio) %></span>
+                        <span class="precio">$<%= Intl.NumberFormat('sp-SP').format((product.precio * (100-product.descuento))/100) %></span>
+                        <p class="descuento"><%= product.descuento %>% OFF</p>
+                    <% } else { %>
+                        <span class="precio">$<%= Intl.NumberFormat('sp-SP').format(product.precio) %></span>
+                        <p class="descuento"></p>
+                    <% } %>
+                    <% if (admin == true) { %>
+                        <p class="p-admin">
+                            <a class="botones-admin" href="/tienda/modifyProduct/<%= product.id %>">EDITAR</a>
+                            <span id="botonEliminar" ><a class="botones-admin-eliminar" id="/tienda/deleteProduct/<%= product.id %>" rel="<%= product.nombre %>">ELIMINAR</a></span>
+                        </p>
+                        
+                    <% }else{ %>
+                    <button><i class="fa-solid fa-cart-shopping"></i> AGREGAR</button>
+                    <% } %>
+                </div>
+            <% }}) %>
+        </section>
+    </main>
+    <div class="pagina" id="paginado-tienda"></div>
+    <!-------------------------FOOTER------------------------------->
+    <%- include('./partials/footer') %>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/busquedaProductos.js"></script> 
+    <script src="/js/linksPorCategoria.js"></script> 
+    <script src="/js/eliminarProducto.js"></script> 
+    
+</body>
+</html>

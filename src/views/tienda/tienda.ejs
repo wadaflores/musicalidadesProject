@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-------------------------HEAD-------------------------->
+<%- include('../partials/head') %>
+
+<body>
+    <!-----------------------HEADER-------------------------->
+    <%- include('../partials/header') %>
+    <!-------------------------MAIN------------------------------->
+    
+    <section class="tituloAdmin">
+        <% if (admin == true) { %>
+            <h2 class="titulo-admin">VISTA DE ADMINISTRACIÓN</h2>
+            <a class="botones-admin naranja" href="/tienda/newProduct">AGREGAR NUEVO PRODUCTO</a>
+        <% }%>
+    </section>
+    <section class="busquedaTitulo"></section>
+    <section class="ordenYfiltros"></section>
+    
+    <main>
+        <section id="productos-destacados"></section>
+    </main>
+    <div class="pagina" id="paginado-tienda"></div>
+    <!-------------------------FOOTER------------------------------->
+    <%- include('../partials/footer') %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="/js/productos.js"></script>  
+	<script src="/js/busquedaProductos.js"></script>
+    <script src="/js/eliminarProducto.js"></script> 
+</body>
+</html>

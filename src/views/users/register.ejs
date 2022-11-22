@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-------------------------HEAD-------------------------->
+<%- include('../partials/head') %>
+
+<body class="registro-body">
+    <header>
+        <nav>
+        </nav>
+    </header>
+    <main>
+        <section class="registro">
+            <a href="/"><img src="./img/logo-musicalidades-header.png" alt=""></a>
+            <span class="text-danger">
+                <ul>
+                    <% if (error){ %>
+                        <% error.forEach(error =>{ %>
+                            <li class="error-validacion" ><%= error.msg %></li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </span>
+            <form class="form" method="POST" action="/register" enctype="multipart/form-data">
+                <div class="datos">
+                    <label for="nombre">
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre*">
+                    </label>
+                    <label for="apellido">
+                        <input type="text" name="apellido" id="apellido" placeholder="Apellido*">
+                    </label>
+                    <label for="email">
+                        <input type="text" name="email" id="email" placeholder="Email*">
+                    </label>
+                    <label for="password">
+                        <input type="password" name="password" id="password" placeholder="Contraseña*">
+                    </label>
+                    <label for="passwordRepetida">
+                        <input type="password" name="passwordRepetida" id="passwordRepetida" placeholder="Confirmar contraseña*">
+                    </label>
+                    <label for="pais">
+                        <input type="text" name="pais" id="pais" placeholder="País*">
+                    </label>
+                    <label for="provincia">
+                        <input type="text" name="provincia" id="provincia" placeholder="Provincia*">
+                    </label>
+                    <label for="ciudad">
+                        <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad / Localidad">
+                    </label>
+                    <label for="direccion">
+                        <input type="text" name="direccion" id="direccion" placeholder="Dirección*">
+                    </label>
+                    <label for="codigo">
+                        <input type="text" name="codigo" id="codigo" placeholder="Código postal*">
+                    </label>
+                    <label for="fechaNac">
+                        <input type="date" name="fechaNac" id="fechaNac" placeholder="Fecha de nacimiento*">
+                    </label>
+                    <label for="avatar">
+                        <p>Imagen de Perfil</p>
+                        <input class="imagenes-input" type="file" name="avatar" id="avatar">
+                    </label>
+                </div>
+                    <div class="botones-fondo">
+                    <button type="reset" class="boton-enviar">Borrar</button>
+                    <button type="submit" class="boton-enviar">Registrarse</button>
+                </div>
+            </form>
+        </section>
+    </main>    
+    <!-------------------------FOOTER------------------------------->
+    <footer>
+    </footer>    
+    <script src="js/validacionRegistroFront.js"></script>
+</body>
+</html>

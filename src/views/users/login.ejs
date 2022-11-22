@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-------------------------HEAD-------------------------->
+<%- include('../partials/head') %>
+
+<body class="registro-body">
+    <header>
+        <nav>
+        </nav>
+    </header>
+    <main class="login">
+        <section class="registro">
+            <a href="/"><img class="margen-logo" src="./img/logo-musicalidades-header.png" alt=""></a>
+            <form action="/login" class="form" method="post">
+                <div class="datos">
+                    <label for="email">
+                        <input type="email" name="email" id="email" placeholder="Dirección de correo electrónico"  value="<%=locals.old && old.email ? old.email : ''%>">
+                    </label>
+                    <span class="error-validación"></span>
+                    <% if (locals.errors && errors.email) { %>
+                        <p class="error-validacion"><%= errors.email.msg %></p>
+                    <% } %>
+                    <label for="password">
+                        <input type="password" class="form-control js_password" name="password" id="password" placeholder="Contraseña" value="<%=locals.old && old.password ? old.password : ''%>">
+                        <span class="error-validacion">
+                            <%= error%>
+                        </span>
+                        <% if (locals.errors && errors.password) { %>
+                            <p class="error-validacion"><%= errors.password.msg %></p>
+                        <% } %>
+                    </label>
+                    <label for="recordarUsuario">
+                        <div class="form-group ">
+                            <input type="checkbox" name="recordarme">
+                            <label class="checkbox-inline">Recordarme</label>
+                        </div>
+                    </label>
+                </div>
+                    <div class="botones-fondo">
+                    <button type="submit" class="boton-enviar">Ingresar</button>
+                </div>
+            </form>
+            <div class="ayuda-login">
+                <a href="/resetPassword">Olvidé mi contraseña</a>
+                <span>|</span>
+                <a href="/register">Registrarse</a>
+            </div>
+        </section>
+    </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/validacionLoginFront.js"></script>    
+</body>
+</html>
